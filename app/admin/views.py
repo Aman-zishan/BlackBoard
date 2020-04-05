@@ -1,9 +1,9 @@
 from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
 from . import admin
-from .forms import DepartmentForm, RoleForm
+from .forms import DepartmentForm, EmployeeAssignForm, RoleForm
 from .. import db
-from ..models import Department, Role
+from ..models import Department, Student, Role
 
 
 
@@ -142,7 +142,7 @@ def add_role():
         return redirect(url_for('admin.list_roles'))
 
     # load role template
-    return render_template('admin/roles/role.html', add_role=add_role,form=form, title='Add Role')
+    return render_template('admin/roles/role.html', add_role=add_role,form=form, title='Add Task')
 
 
 @admin.route('/roles/edit/<int:id>', methods=['GET', 'POST'])
@@ -190,3 +190,42 @@ def delete_role(id):
     return redirect(url_for('admin.list_roles'))
 
     return render_template(title="Delete Task")
+
+@admin.route('/employees')
+@login_required
+def list_employees():
+    """
+    List all employees
+    """
+    check_admin()
+
+    student = Student.query.all()
+    return render_template('admin/employees/employees.html',student=student, title='students')
+
+
+@admin.route('/employees/assign/<int:id>', methods=['GET', 'POST'])
+@login_required
+def assign_employee(id):
+    """
+    Assign a department and a role to an employee
+    """
+    check_admin()
+
+    student = Student.query.get_or_404(id)
+
+    # prevent admin from being assigned a department or role
+    if student.is_admin:
+        abort(403)
+
+    form = EmployeeAssignForm(obj=Student)
+    if form.validate_on_submit():
+        student.department = form.department.data
+        student.role = form.role.data
+        db.session.add(student)
+        db.session.commit()
+        flash('You have successfully assigned a subject and task.')
+
+        # redirect to the roles page
+        return redirect(url_for('admin.list_employees'))
+
+    return render_template('admin/employees/employee.html',student=student, form=form,title='Assign Student')
