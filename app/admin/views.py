@@ -79,11 +79,11 @@ def edit_subject(id):
         flash('You have successfully edited the subject.')
 
         # redirect to the departments page
-        return redirect(url_for('admin.list_departments'))
+        return redirect(url_for('admin.list_subjects'))
 
     form.description.data = subject.description
     form.name.data = subject.name
-    return render_template('admin/departments/department.html', action="Edit",add_department=add_department, form=form,department=department, title="Edit Department")
+    return render_template('admin/departments/department.html', action="Edit",add_subject=add_subject, form=form,subject=subject, title="Edit Subject")
 
 
 @admin.route('/subjects/delete/<int:id>', methods=['GET', 'POST'])
@@ -95,7 +95,7 @@ def delete_subject(id):
     check_admin()
 
     subject = Subject.query.get_or_404(id)
-    db.session.delete(sunject)
+    db.session.delete(subject)
     db.session.commit()
     flash('You have successfully deleted the subject.')
 
@@ -181,7 +181,7 @@ def delete_task(id):
     check_admin()
 
     task = Task.query.get_or_404(id)
-    db.session.delete(role)
+    db.session.delete(task)
     db.session.commit()
     flash('You have successfully deleted the Task.')
 
