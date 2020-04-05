@@ -12,7 +12,7 @@ class Student(UserMixin, db.Model):
 
     # Ensures table will be named in plural and not in singular
     # as is the name of the model
-    __tablename__ = 'student'
+    __tablename__ = 'students'
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(60), index=True, unique=True)
@@ -20,8 +20,8 @@ class Student(UserMixin, db.Model):
     first_name = db.Column(db.String(60), index=True)
     last_name = db.Column(db.String(60), index=True)
     password_hash = db.Column(db.String(128))
-    department_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
+    task_id = db.Column(db.Integer, db.ForeignKey('tasks.id'))
     is_admin = db.Column(db.Boolean, default=False)
 
     @property
@@ -54,33 +54,33 @@ def load_user(user_id):
     return Student.query.get(int(user_id))
 
 
-class Department(db.Model):
+class Subject(db.Model):
     """
-    Create a Department table
+    Create a Subject table
     """
 
-    __tablename__ = 'departments'
+    __tablename__ = 'subjects'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
-    student = db.relationship('Student', backref='department',lazy='dynamic')
+    student = db.relationship('Student', backref='subject',lazy='dynamic')
 
     def __repr__(self):
         return '<Department: {}>'.format(self.name)
 
 
-class Role(db.Model):
+class Task(db.Model):
     """
-    Create a Role table
+    Create a Task table
     """
 
-    __tablename__ = 'roles'
+    __tablename__ = 'tasks'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
-    student = db.relationship('Student', backref='role',lazy='dynamic')
+    student = db.relationship('Student', backref='task',lazy='dynamic')
 
     def __repr__(self):
-        return '<Role: {}>'.format(self.name)
+        return '<Task: {}>'.format(self.name)

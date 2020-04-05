@@ -1,7 +1,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %}
-    {% if add_department %}
+    {% if add_subject %}
         Add Subject
     {% else %}
         Edit Subject
@@ -13,7 +13,7 @@
     <div class="middle">
       <div class="inner">
         <div class="center">
-            {% if add_department %}
+            {% if add_subject %}
                 <h1>Add Subject</h1>
             {% else %}
                 <h1>Edit Subject</h1>

@@ -10,7 +10,7 @@
         {{ utils.flashed_messages() }}
         <br/>
         <h1 style="text-align:center;">Tasks</h1>
-        {% if roles %}
+        {% if tasks %}
           <hr class="intro-divider">
           <div class="center">
             <table class="table table-striped table-bordered">
@@ -24,24 +24,24 @@
                 </tr>
               </thead>
               <tbody>
-              {% for role in roles %}
+              {% for task in tasks %}
                 <tr>
-                  <td> {{ role.name }} </td>
-                  <td> {{ role.description }} </td>
+                  <td> {{ task.name }} </td>
+                  <td> {{ task.description }} </td>
                   <td>
-                    {% if role.student %}
-                      {{ role.student.count() }}
+                    {% if task.student %}
+                      {{ task.student.count() }}
                     {% else %}
                       0
                     {% endif %}
                   </td>
                   <td>
-                    <a href="{{ url_for('admin.edit_role', id=role.id) }}">
+                    <a href="{{ url_for('admin.edit_task', id=task.id) }}">
                       <i class="fa fa-pencil"></i> Edit 
                     </a>
                   </td>
                   <td>
-                    <a href="{{ url_for('admin.delete_role', id=role.id) }}">
+                    <a href="{{ url_for('admin.delete_task', id=task.id) }}">
                       <i class="fa fa-trash"></i> Delete 
                     </a>
                   </td>
@@ -56,7 +56,7 @@
             <h3> No task have been added. </h3>
             <hr class="intro-divider">
         {% endif %}
-          <a href="{{ url_for('admin.add_role') }}" class="btn btn-default btn-lg">
+          <a href="{{ url_for('admin.add_task') }}" class="btn btn-default btn-lg">
             <i class="fa fa-plus"></i>
             Add Task
           </a>
