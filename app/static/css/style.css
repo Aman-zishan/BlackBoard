@@ -15,7 +15,7 @@ h3 {
 a,
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav>li>a {
-    color: #aec251;
+    color: #444444;
 }
 
 a:hover,
@@ -113,4 +113,21 @@ p.copyright {
     height: auto !important;
     height: 100%;
     margin: 0 auto -4em;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 70%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
 }
