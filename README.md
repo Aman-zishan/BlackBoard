@@ -10,22 +10,22 @@
 
  <h3> How it works:point_up:</h3>
  
-**The home page has two options which are register and login where the students and teachers can create an account.**
+**1)The home page has two options which are register and login where the students and teachers can create an account.**
 
-<img src=demo/b1.png />
+<img width="75%" height="75%" src=demo/b1.png />
 
-**When the students' register, his/her details are saved to the database and they are redirected to their dashboard.**
+**2)When the students' register, his/her details are saved to the database and they are redirected to their dashboard.**
 
-<img src=demo/b3.png />
+<img width="75%" height="75%" src=demo/b3.png />
 
-**admin page can be accessed only by the teachers and will have options to add subjects,tasks and assign them to respective students.**
+**3)admin page can be accessed only by the teachers and will have options to add subjects,tasks and assign them to respective students.**
 
-<img src=demo/b2.png />
-<img src=demo/b4.png />
-<img src=demo/b5.png />
-<img src=demo/b6.png />
-<img src=demo/b7.png />
-<img src=demo/b8.png />
+<img width="75%" height="75%" src=demo/b2.png />
+<img width="75%" height="75%" src=demo/b4.png />
+<img width="75%" height="75%" src=demo/b5.png />
+<img width="75%" height="75%" src=demo/b6.png />
+<img width="75%" height="75%" src=demo/b7.png />
+<img width="75%" height="75%" src=demo/b8.png />
 
 
 
