@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ title }} | CMS-APP</title>
+    <title>{{ title }} | BlackBoard</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -18,9 +19,9 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand topnav" href="{{ url_for('home.homepage') }}">Class Management System</a>
+              <a class="text navbar-brand topnav " href="{{ url_for('home.homepage') }}">BlackBoard</a>
           </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="text1 collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
     {% if current_user.is_authenticated %}
       {% if current_user.is_admin %}
@@ -47,7 +48,7 @@
       {% endblock %}
       <div class="push"></div>
     </div>
-    <footer>
+    <footer class="text1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -62,7 +63,7 @@
       <li><a href="{{ url_for('auth.login') }}">Login</a></li>
     {% endif %}
 </ul>
-                    <p class="copyright text-muted small">Copyright © 2020. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright ©Amanzishan 2020. All Rights Reserved</p>
                 </div>
             </div>
         </div>

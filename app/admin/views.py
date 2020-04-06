@@ -28,7 +28,7 @@ def list_subjects():
 
     subjects = Subject.query.all()
 
-    return render_template('admin/departments/departments.html', subjects=subjects, title="Subjects")
+    return render_template('admin/subjects/subjects.html', subjects=subjects, title="Subjects")
 
 
 @admin.route('/subjects/add', methods=['GET', 'POST'])
@@ -57,7 +57,7 @@ def add_subject():
         return redirect(url_for('admin.list_subjects'))
 
     # load department template
-    return render_template('admin/departments/department.html', action="Add", add_subject=add_subject, form=form,title="Add Subject")
+    return render_template('admin/subjects/subject.html', action="Add", add_subject=add_subject, form=form,title="Add Subject")
 
 
 @admin.route('/subjects/edit/<int:id>', methods=['GET', 'POST'])
@@ -83,7 +83,7 @@ def edit_subject(id):
 
     form.description.data = subject.description
     form.name.data = subject.name
-    return render_template('admin/departments/department.html', action="Edit",add_subject=add_subject, form=form,subject=subject, title="Edit Subject")
+    return render_template('admin/subjects/subject.html', action="Edit",add_subject=add_subject, form=form,subject=subject, title="Edit Subject")
 
 
 @admin.route('/subjects/delete/<int:id>', methods=['GET', 'POST'])
@@ -112,7 +112,7 @@ def list_tasks():
     List all roles
     """
     tasks = Task.query.all()
-    return render_template('admin/roles/roles.html',tasks=tasks, title='Tasks')
+    return render_template('admin/tasks/tasks.html',tasks=tasks, title='Tasks')
 
 
 @admin.route('/tasks/add', methods=['GET', 'POST'])
@@ -142,7 +142,7 @@ def add_task():
         return redirect(url_for('admin.list_tasks'))
 
     # load role template
-    return render_template('admin/roles/role.html', add_task=add_task,form=form, title='Add Task')
+    return render_template('admin/tasks/task.html', add_task=add_task,form=form, title='Add Task')
 
 
 @admin.route('/tasks/edit/<int:id>', methods=['GET', 'POST'])
@@ -169,7 +169,7 @@ def edit_task(id):
 
     form.description.data = role.description
     form.name.data = role.name
-    return render_template('admin/roles/role.html', add_task=add_task,form=form, title="Edit Task")
+    return render_template('admin/tasks/task.html', add_task=add_task,form=form, title="Edit Task")
 
 
 @admin.route('/tasks/delete/<int:id>', methods=['GET', 'POST'])
@@ -199,7 +199,7 @@ def list_students():
     check_admin()
 
     students = Student.query.all()
-    return render_template('admin/employees/employees.html',students=students, title='students')
+    return render_template('admin/students/students.html',students=students, title='students')
 
 
 @admin.route('/students/assign/<int:id>', methods=['GET', 'POST'])
@@ -227,4 +227,4 @@ def assign_student(id):
         # redirect to the roles page
         return redirect(url_for('admin.list_students'))
 
-    return render_template('admin/employees/employee.html',student=student, form=form,title='Assign Student')
+    return render_template('admin/students/student.html',student=student, form=form,title='Assign Student')
