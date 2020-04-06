@@ -12,20 +12,21 @@
  
 **1)The home page has two options which are register and login where the students and teachers can create an account.**
 
-<img width="75%" height="75%" src=demo/b1.png />
+<p align="center"><img width="75%" height="75%" src=demo/b1.png /></p>
 
 **2)When the students' register, his/her details are saved to the database and they are redirected to their dashboard.**
 
-<img width="75%" height="75%" src=demo/b3.png />
+<p align="center"><img width="75%" height="75%" src=demo/b3.png /></p>
 
 **3)admin page can be accessed only by the teachers and will have options to add subjects,tasks and assign them to respective students.**
-
+<p align="center">
 <img width="75%" height="75%" src=demo/b2.png />
 <img width="75%" height="75%" src=demo/b4.png />
 <img width="75%" height="75%" src=demo/b5.png />
 <img width="75%" height="75%" src=demo/b6.png />
 <img width="75%" height="75%" src=demo/b7.png />
 <img width="75%" height="75%" src=demo/b8.png />
+ </p>
 
 
 
