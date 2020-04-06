@@ -14,7 +14,7 @@
 
 <p align="center"><img width="75%" height="75%" src=demo/b1.png /></p>
 
-**2)When the students' register, his/her details are saved to the database and they are redirected to their dashboard.**
+**2)When the students' register, his/her details are saved to the database and they are redirected to their dashboard on login.**
 
 <p align="center"><img width="75%" height="75%" src=demo/b3.png /></p>
 
