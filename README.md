@@ -14,7 +14,7 @@
 
 <img src=demo/b1.png />
 
-**When the students" register, his/her details are saved to the database and they are redirected to their dashboard.**
+**When the students' register, his/her details are saved to the database and they are redirected to their dashboard.**
 
 <img src=demo/b3.png />
 **admin page can be accessed only by the teachers and will have options to add subjects,tasks and assign them to respective students.**
