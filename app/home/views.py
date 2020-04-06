@@ -11,6 +11,12 @@ def homepage():
     Render the homepage template on the / route
     """
     return render_template('home/index.html', title="Welcome")
+@home.route('/about')
+def about():
+    """
+    Render the homepage template on the / route
+    """
+    return render_template('home/about.html', title="about")
 
 
 @home.route('/dashboard')

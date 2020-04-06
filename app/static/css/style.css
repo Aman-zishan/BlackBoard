@@ -21,7 +21,7 @@ a,
 a:hover,
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-nav>li>a:hover {
-    color: #687430;
+    color: rgb(109, 109, 109);
 }
 
 footer {
@@ -36,18 +36,18 @@ p.copyright {
 .alert-info {
     width: 50%;
     margin: auto;
-    color: #687430;
+    color: #000000;
     background-color: #e6ecca;
-    border-color: #aec251;
+    border-color: rgb(129, 129, 129);
 }
 
 .btn-default {
-    border-color: #aec251;
-    color: #aec251;
+    border-color: #000000;
+    color: black;
 }
 
 .btn-default:hover {
-    background-color: #aec251;
+    background-color: rgb(122, 122, 122);
 }
 
 .center {
@@ -87,16 +87,12 @@ p.copyright {
     position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
+    color: white;
 }
 
 .intro-message>h1 {
     margin: 0;
-    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.6);
     font-size: 5em;
-}
-
-.intro-message>h3 {
-    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.6);
 }
 
 .lead {

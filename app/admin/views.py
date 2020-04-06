@@ -15,14 +15,14 @@ def check_admin():
         abort(403)
 
 
-# Department Views
+# Subject Views
 
 
 @admin.route('/subjects', methods=['GET', 'POST'])
 @login_required
 def list_subjects():
     """
-    List all departments
+    List all subjects
     """
     check_admin()
 
@@ -35,7 +35,7 @@ def list_subjects():
 @login_required
 def add_subject():
     """
-    Add a department to the database
+    Add a subject to the database
     """
     check_admin()
 
@@ -45,18 +45,17 @@ def add_subject():
     if form.validate_on_submit():
         subject = Subject(name=form.name.data,description=form.description.data)
         try:
-            # add department to the database
+            
             db.session.add(subject)
             db.session.commit()
             flash('You have successfully added a new subject.')
         except:
-            # in case department name already exists
+         
             flash('Error: subject name already exists.')
 
-        # redirect to departments page
+   
         return redirect(url_for('admin.list_subjects'))
 
-    # load department template
     return render_template('admin/subjects/subject.html', action="Add", add_subject=add_subject, form=form,title="Add Subject")
 
 
@@ -64,7 +63,7 @@ def add_subject():
 @login_required
 def edit_subject(id):
     """
-    Edit a department
+    Edit a subject
     """
     check_admin()
 
@@ -78,7 +77,7 @@ def edit_subject(id):
         db.session.commit()
         flash('You have successfully edited the subject.')
 
-        # redirect to the departments page
+        
         return redirect(url_for('admin.list_subjects'))
 
     form.description.data = subject.description
@@ -90,7 +89,7 @@ def edit_subject(id):
 @login_required
 def delete_subject(id):
     """
-    Delete a department from the database
+    Delete a subject from the database
     """
     check_admin()
 
@@ -99,7 +98,7 @@ def delete_subject(id):
     db.session.commit()
     flash('You have successfully deleted the subject.')
 
-    # redirect to the departments page
+    
     return redirect(url_for('admin.list_subjects'))
 
     return render_template(title="Delete Subject")
@@ -109,7 +108,7 @@ def delete_subject(id):
 def list_tasks():
     check_admin()
     """
-    List all roles
+    List all tasks
     """
     tasks = Task.query.all()
     return render_template('admin/tasks/tasks.html',tasks=tasks, title='Tasks')
@@ -119,7 +118,7 @@ def list_tasks():
 @login_required
 def add_task():
     """
-    Add a role to the database
+    Add a task to the database
     """
     check_admin()
 
@@ -130,18 +129,18 @@ def add_task():
         task = Task(name=form.name.data,description=form.description.data)
 
         try:
-            # add role to the database
+           
             db.session.add(task)
             db.session.commit()
             flash('You have successfully added a new task.')
         except:
-            # in case role name already exists
+           
             flash('Error: task already exists.')
 
-        # redirect to the roles page
+       
         return redirect(url_for('admin.list_tasks'))
 
-    # load role template
+    
     return render_template('admin/tasks/task.html', add_task=add_task,form=form, title='Add Task')
 
 
@@ -149,7 +148,7 @@ def add_task():
 @login_required
 def edit_task(id):
     """
-    Edit a role
+    Edit a task
     """
     check_admin()
 
@@ -164,11 +163,11 @@ def edit_task(id):
         db.session.commit()
         flash('You have successfully edited the Task.')
 
-        # redirect to the roles page
+        # redirect to the tasks page
         return redirect(url_for('admin.list_tasks'))
 
-    form.description.data = role.description
-    form.name.data = role.name
+    form.description.data = task.description
+    form.name.data = task.name
     return render_template('admin/tasks/task.html', add_task=add_task,form=form, title="Edit Task")
 
 
@@ -185,7 +184,7 @@ def delete_task(id):
     db.session.commit()
     flash('You have successfully deleted the Task.')
 
-    # redirect to the roles page
+    # redirect to the tasks page
     return redirect(url_for('admin.list_tasks'))
 
     return render_template(title="Delete Task")
@@ -194,7 +193,7 @@ def delete_task(id):
 @login_required
 def list_students():
     """
-    List all employees
+    List all students
     """
     check_admin()
 
@@ -206,13 +205,13 @@ def list_students():
 @login_required
 def assign_student(id):
     """
-    Assign a department and a role to an employee
+    Assign a subject and a task to a student
     """
     check_admin()
 
     student = Student.query.get_or_404(id)
 
-    # prevent admin from being assigned a department or role
+    # prevent admin from being assigned a subject or task
     if student.is_admin:
         abort(403)
 
@@ -224,7 +223,7 @@ def assign_student(id):
         db.session.commit()
         flash('You have successfully assigned a subject and task.')
 
-        # redirect to the roles page
+        # redirect to the tasks page
         return redirect(url_for('admin.list_students'))
 
     return render_template('admin/students/student.html',student=student, form=form,title='Assign Student')
